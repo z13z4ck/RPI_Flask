@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import *
 import rpi
 
 
@@ -20,7 +20,7 @@ def index():
 
 
 # change gpio value
-@app.route("/toggle_gpio_state/int:status>", methods=['POST'])
+@app.route("/toggle_gpio_state/<int:status>", methods=['POST'])
 def toggle_gpio_status(status):
     # check the value of the parameter
     if not status:
@@ -40,4 +40,4 @@ def about():
     return render_template('about.html')
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", debug=True)
+    app.run(host="0.0.0.0", debug=True)
